@@ -38,6 +38,8 @@
 #include "openthread/logging.h"
 #include "openthread/tasklet.h"
 
+#include "labsc_auth_api.h"
+
 #if CONFIG_OPENTHREAD_CLI_ESP_EXTENSION
 #include "esp_ot_cli_extension.h"
 #endif // CONFIG_OPENTHREAD_CLI_ESP_EXTENSION
@@ -114,5 +116,5 @@ void app_main(void)
     ESP_ERROR_CHECK(esp_netif_init());
     ESP_ERROR_CHECK(esp_vfs_eventfd_register(&eventfd_config));
     xTaskCreate(ot_task_worker, "ot_cli_main", 10240, xTaskGetCurrentTaskHandle(), 5, NULL);
-    labsc_auth_init();
+    labsc_auth_api_init();
 }
